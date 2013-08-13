@@ -1,0 +1,40 @@
+language: node_js
+node_js:
+- '0.11'
+- '0.10'
+- '0.8'
+- '0.6'
+branches:
+  only:
+  - master
+before_script:
+- npm install -g mocha
+script:
+- npm -d install
+- npm test
+after_success:
+- git clone https://github.com/andrewbeng89/mitb_node_demo.git
+- cd mitb_node_demo
+- git branch -a
+- git checkout gh-pages
+- ls
+- git checkout master -- public
+- git checkout master -- index.html
+- git pull origin gh-pages
+- git add ./public
+- git add ./index.html
+- git config --global user.email "andrew.beng.2010@sis.smu.edu.sg"
+- git config --global user.name "andrewbeng89"
+- git commit -a -m "travis-ci update"
+- git status
+- git push https://$MY_GITHUB_TOKEN@github.com/andrewbeng89/mitb_node_demo.git gh-pages
+env:
+  global:
+  - secure: Zne2/PcxxbtCM6QCQehWVGpqcCZDIF1Z6MTRBfaL5OtHTptMEp//jI1v6BdTGSMOK2FkuUMofRjuTtS+6XkVSawi1j+vTpzm6AAPMcd4gT1rhJxWWy7UFuB+kxNE14SC3fOwvZC4i9Mt8nJVDftdHc/3sxryJ6DrMIbQRL3HgDk=
+deploy:
+  provider: heroku
+  api_key:
+    secure: P9jpi9rk9W+564aOVRTu6z/VoFYBUH06AtqvQcs61JJ7TinDfuSKeWsSoG3TCfSLEEDDJ4ubKuezrXSYnDQ6PmFokRsBLCaoJeGOVhDq/OGSGjSGfwx1OlV//Aug7zEoSzWNh2wj4VFKvC/iPGiFgAG+v7lOvh0JQA4jE3zwGkw=
+  app: mitb-node-demo
+  on:
+    repo: andrewbeng89/mitb_node_demo

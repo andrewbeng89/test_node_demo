@@ -1,0 +1,1 @@
+{"ts":1376123057852,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"<html>\n    <head>\n        <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js\"></script>\n        <script>\n            window.location.replace(\"./public/index.html\");\n        </script>\n    </head>\n</html>"]],"start1":0,"start2":0,"length1":0,"length2":223}]],"length":223}
